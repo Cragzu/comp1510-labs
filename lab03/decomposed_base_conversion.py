@@ -35,7 +35,7 @@ def base_conversion():
     :return: a four-digit int equivalent to the given base-10 int in the given base.
     """
     destination_base = int(input("What base would you like to convert to? (between 2 and 9): "))
-    maximum_number = (destination_base**4) - 1
+    maximum_number = (destination_base ** 4) - 1
 
     print("The maximum number that will fit into four base", destination_base, "digits is", maximum_number)
     num_to_convert = int(input("Please enter a number to convert, less than or equal to the above number: "))
