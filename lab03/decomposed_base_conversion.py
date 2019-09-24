@@ -45,7 +45,7 @@ def base_conversion():
         return
 
     first_digit = remainder_calc(num_to_convert, destination_base)
-    num_to_convert //= destination_base # set new_num to quotient of itself over the base
+    num_to_convert //= destination_base  # set to quotient of itself over the base
     print(first_digit)
 
     second_digit = remainder_calc(num_to_convert, destination_base)
