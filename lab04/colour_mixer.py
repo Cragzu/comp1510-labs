@@ -3,50 +3,27 @@ Module containing a function to mix two primary colours into a secondary colour.
 """
 
 
-def red_colour_check(first_check, second_check):
+def colour_check(first_colour, second_colour, third_colour, first_check, second_check, first_result, second_result):
     """
-    Check whether the given parameters are "red" and another primary colour.
+    Check whether the two colour inputs are primary and combine to create a secondary colour.
 
-    :precondition: first_check must be a string, and should be "red" for the function to return a colour.
-    :precondition: second_check must be a string, and should be "blue" or "yellow" for the function to return a colour.
-    :postcondition: function will output either a colour or False, depending on what the inputs were as listed above.
-    :param first_check: a string representing the first given colour.
-    :param second_check: a string representing the second given colour.
-    :return: a string representing the secondary colour made by the two primary colours, or False if there is none.
-
-    >>> red_colour_check('red', 'yellow')
-    'orange'
-    >>> red_colour_check('a', 'b')
-    False
+    :precondition: all inputs must be strings
+    :precondition: first_colour, second_colour, and third_colour must be the three primary colours
+    :postcondition: function will return a secondary colour or False if inputs are invalid
+    :param first_colour: a string with the first primary colour to check against, the first input should always be this
+    :param second_colour: a string with a possible second primary colour
+    :param third_colour: a string with the other possible second primary colour
+    :param first_check: a string, the first input to check whether it is the colour
+    :param second_check: a string, the second input to check whether it is the colour
+    :param first_result: a string, the expected result of the first and second colours (secondary colour)
+    :param second_result: a string, the expected result of the first and third colours
+    :return: a string containing one of the two results, or False if the colours are invalid
     """
-    if first_check == "red":
-        if second_check == "yellow":
-            return "orange"
-        elif second_check == "blue":
-            return "purple"
-
-    return False
-
-
-def yellow_colour_check(first_check, second_check):
-    """
-    Check whether the given parameters are "yellow" and "blue".
-
-    :precondition: first_check must be a string, and should be "yellow" for the function to return "green".
-    :precondition: second_check must be a string, and should be "blue" for the function to return "green".
-    :postcondition: function will output either "green "or False, depending on what the inputs were as listed above.
-    :param first_check: a string representing the first given colour.
-    :param second_check: a string representing the second given colour.
-    :return: a string containing "green", or False if the inputs were not "yellow" and "blue".
-
-    >>> yellow_colour_check('yellow', 'blue')
-    'green'
-    >>> yellow_colour_check('a', 'b')
-    False
-    """
-    if first_check == "yellow":
-        if second_check == "blue":
-            return "green"
+    if first_check == first_colour:
+        if second_check == second_colour:
+            return first_result
+        elif second_check == third_colour:
+            return second_result
 
     return False
 
@@ -55,7 +32,7 @@ def colour_mixer():
     """
     Find the secondary colour created by mixing the two given primary colours.
 
-    Gets the two strings as user input and passes them into the helper functions in both possible positions.
+    Gets the two strings as user input and passes them into the helper function in both possible positions.
 
     If the whole function has been executed with no return, the colours were invalid. Returns a helpful error message.
 
@@ -64,21 +41,29 @@ def colour_mixer():
     :postcondition: find the secondary colour created by mixing the given primary colours
     :return: a string containing the created secondary colour, or an error message if the input was invalid
     """
-    first_colour = input("Enter a primary colour: ")
-    second_colour = input("Enter another primary colour: ")
+    first_input = input("Enter a primary colour: ")
+    second_input = input("Enter another primary colour: ")
 
-    if red_colour_check(first_colour, second_colour):  # if the function returns a colour, not False
-        return red_colour_check(first_colour, second_colour)
+    mixed_colour = colour_check("red", "yellow", "blue", first_input, second_input,
+                                "orange", "purple")
+    if mixed_colour:  # if the function returns a colour, not False
+        return mixed_colour
 
-    elif red_colour_check(second_colour, first_colour):
-        return red_colour_check(second_colour, first_colour)
+    mixed_colour = colour_check("red", "yellow", "blue", second_input, first_input,
+                                "orange", "purple")
+    if mixed_colour:
+        return mixed_colour
 
     # if red is not one of the colours, yellow must be one of the colours for it to be valid
-    elif yellow_colour_check(first_colour, second_colour):
-        return yellow_colour_check(first_colour, second_colour)
+    mixed_colour = colour_check("yellow", "blue", "red", first_input, second_input,
+                                "green", "orange")
+    if mixed_colour:
+        return mixed_colour
 
-    elif yellow_colour_check(second_colour, first_colour):
-        return yellow_colour_check(second_colour, first_colour)
+    mixed_colour = colour_check("yellow", "blue", "red", second_input, first_input,
+                                "green", "orange")
+    if mixed_colour:
+        return mixed_colour
 
     return "The entered colours were invalid. Please enter two different primary colours (red, yellow, or blue)."
 
