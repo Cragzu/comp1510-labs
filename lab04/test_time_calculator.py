@@ -7,7 +7,7 @@ from time_calculator import time_calculator
 class TestTimeCalculator(TestCase):
 
     @unittest.mock.patch('sys.stdout', new_callable=io.StringIO)
-    def test_30_seconds(self, mock_stdout):  # test for printed output
+    def test_30_seconds(self, mock_stdout):
         expected_output = "0 0 0 30\n"  # account for auto inserted newline
         time_calculator(30)
         self.assertEqual(mock_stdout.getvalue(), expected_output)
