@@ -32,12 +32,14 @@ def roll_die(number_of_rolls, number_of_sides):
 
 def choose_inventory(inventory, selection):
     """
-    accept a list x and an integer y, select y elements at random from x
-    return these y elements in a new sorted list z
+    Select an assortment of items from a given list, create a sorted list containing the given number of selected items.
 
-    :param inventory:
-    :param selection:
-    :return:
+    :precondition: inventory should not be empty, else a warning will be returned
+    :precondition: selection should be a positive int between 1 and inventory length, else a warning will be returned
+    :postcondition: function will return a list of length selection containing a random sample from inventory
+    :param inventory: a list representing all available items to choose from
+    :param selection: a positive int less than or equal to the length of inventory representing the desired # of items
+    :return: a sorted list containing a selection of items from the original inventory list
     """
     if inventory == [] and selection == 0:
         return []

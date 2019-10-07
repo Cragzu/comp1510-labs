@@ -1,7 +1,7 @@
 import io
 from unittest import TestCase
 import unittest.mock
-from time_calculator import time_calculator
+from lab04.time_calculator import time_calculator
 
 
 class TestTimeCalculator(TestCase):
