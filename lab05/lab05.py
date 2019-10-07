@@ -30,12 +30,38 @@ def roll_die(number_of_rolls, number_of_sides):
     return total
 
 
+def choose_inventory(inventory, selection):
+    """
+    accept a list x and an integer y, select y elements at random from x
+    return these y elements in a new sorted list z
+
+    :param inventory:
+    :param selection:
+    :return:
+    """
+    if inventory == [] and selection == 0:
+        return []
+
+    elif selection < 0:
+        print("The selection cannot be a negative number!")
+        return []
+
+    elif selection >= len(inventory):  # selection is equal or longer than inventory
+        if selection > len(inventory):  # warning message only when selection is longer
+            print("The selection cannot be larger than the available inventory!")
+        return sorted(inventory)
+
+    else:
+        return sorted(random.sample(inventory, selection))
+
+
 def main():
     """
     Drive the program.
 
     Tests the functions created in this module.
     """
+    print(choose_inventory(['a', 'b', 'c', 'd', 'e', 'f', 'g'], 3))
 
 
 if __name__ == "__main__":
