@@ -107,7 +107,6 @@ def main():
 
     Tests the functions created in this module.
     """
-
     print(generate_name(5))
 
 if __name__ == "__main__":
