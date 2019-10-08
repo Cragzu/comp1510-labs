@@ -1,5 +1,5 @@
 """
-Module containing two functions to roll a die and create a name.
+Module containing functions for creating a D&D character.
 """
 import random
 
@@ -121,20 +121,14 @@ def create_character(name_length):
 
 
 def print_character(character):
-    print('Your character is named', character[0])
+    print('Your character is named', character[0])  # print name
 
-    for i in range(1, len(character)):
-        print('Your', character[i][0], 'stat is', character[i][1])
+    for i in range(1, 6):  # print stats
+        print('Your', character[i][0], 'is', character[i][1])
 
-
-def main():
-    """
-    Drive the program.
-
-    Tests the functions created in this module.
-    """
-    print(create_character(4))
-    print_character(create_character(4))
-
-if __name__ == "__main__":
-    main()
+    if len(character) == 8 and character[7]:  # print items if they exist
+        print('You have these items:')
+        for i in character[7]:
+            print(i)
+    else:
+        print('You don\'t have any items right now.')
