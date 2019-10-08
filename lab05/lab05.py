@@ -120,13 +120,21 @@ def create_character(name_length):
     return character
 
 
+def print_character(character):
+    print('Your character is named', character[0])
+
+    for i in range(1, len(character)):
+        print('Your', character[i][0], 'stat is', character[i][1])
+
+
 def main():
     """
     Drive the program.
 
     Tests the functions created in this module.
     """
-    create_character(4)
+    print(create_character(4))
+    print_character(create_character(4))
 
 if __name__ == "__main__":
     main()
