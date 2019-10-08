@@ -98,7 +98,26 @@ def generate_name(syllables):
     for i in range(syllables):
         name += generate_syllable()
 
-    return name
+    return name.capitalize()
+
+
+def create_character(name_length):
+    """
+    Create a D&D character as a list with a name and six statistics.
+
+    :precondition: name_length must be a positive int
+    :param name_length: a positive int representing the desired number of syllables in the character name
+    :return: a list of length 7 containing a string and 6 nested lists, each containing a string and int
+    """
+
+    character = [generate_name(name_length)]  # begin the list with the character name
+
+    for i in ['Strength', 'Dexterity', 'Constitution', 'Intelligence', 'Wisdom', 'Charisma']:
+        statistic = [i, roll_die(3, 6)]  # create each nested list with the statistic name and value
+
+        character.append(statistic)
+
+    return character
 
 
 def main():
@@ -107,7 +126,7 @@ def main():
 
     Tests the functions created in this module.
     """
-    print(generate_name(5))
+    create_character(4)
 
 if __name__ == "__main__":
     main()
