@@ -57,14 +57,58 @@ def choose_inventory(inventory, selection):
         return sorted(random.sample(inventory, selection))
 
 
+def generate_vowel():
+    """
+    Randomly select one vowel and return it.
+
+    :return: a string of length 1 containing a vowel
+    """
+    return random.choice('aeiouy')
+
+
+def generate_consonant():
+    """
+    Randomly select one consonant and return it.
+
+    :return: a string of length 1 containing a consonant
+    """
+    return random.choice('bcdfghjklmnpqrstvwxyz')
+
+
+def generate_syllable():
+    """
+    Create a syllable using one consonant and one vowel. Use the generate consonant and vowel functions.
+
+    :return: a string of length 2 containing a consonant and vowel
+    """
+    return generate_consonant() + generate_vowel()
+
+
+def generate_name(syllables):
+    """
+    Create a name using the specified number of syllables. Use the generate syllable function.
+
+    :precondition: syllables must be a positive int
+    :postcondition: function will generate a character name
+    :param syllables: a positive int representing the desired number of syllables for the name
+    :return: a string of length syllables * 2
+    """
+    name = ""
+
+    for i in range(syllables):
+        name += generate_syllable()
+
+    return name
+
+
 def main():
     """
     Drive the program.
 
     Tests the functions created in this module.
     """
-    print(choose_inventory(['a', 'b', 'c', 'd', 'e', 'f', 'g'], 3))
 
+    print(generate_name(5))
 
 if __name__ == "__main__":
     main()
