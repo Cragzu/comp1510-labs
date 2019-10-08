@@ -9,6 +9,7 @@ class TestChooseInventory(TestCase):
 
     def test_successful(self):
         self.assertEqual(['a', 'c', 'e'], choose_inventory(['c', 'b', 'd', 'a', 'e'], 3))
+        # self.assertIn(choose_inventory(['c', 'b', 'd', 'a', 'e'], 3), ['c', 'b', 'd', 'a', 'e'])
 
     def test_empty_values(self):
         self.assertEqual([], choose_inventory([], 0))
