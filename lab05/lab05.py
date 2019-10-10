@@ -121,6 +121,13 @@ def create_character(name_length):
 
 
 def print_character(character):
+    """
+    Print out character information in an easily readable way to the user.
+
+    :precondition: character must be a list containing a string, 6 nested lists, and potentially another nested list
+    :param character: a list containing a name followed by nested lists representing statistics
+    :return: none, uses print statements
+    """
     print('Your character is named', character[0])  # print name
 
     for i in range(1, 7):  # print stats

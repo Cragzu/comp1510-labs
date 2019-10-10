@@ -5,7 +5,6 @@ from lab05 import choose_inventory
 class TestChooseInventory(TestCase):
 
     def test_successful(self):
-
         for i in choose_inventory(['c', 'b', 'd', 'a', 'e'], 3):
             self.assertIn(i, ['a', 'b', 'c', 'd', 'e'])
 
