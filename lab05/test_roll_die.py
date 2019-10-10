@@ -1,8 +1,5 @@
 from unittest import TestCase
-import random
 from lab05 import roll_die
-
-random.seed(0)  # use seed so random results will always be the same
 
 
 class TestRollDie(TestCase):
@@ -14,4 +11,4 @@ class TestRollDie(TestCase):
         self.assertEqual(0, roll_die(1, 0))
 
     def test_successful(self):
-        self.assertEqual(9, roll_die(3, 6))
+        self.assertIn(roll_die(3, 6), range(3, 18))  # make sure result is within parameters

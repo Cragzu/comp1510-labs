@@ -123,7 +123,7 @@ def create_character(name_length):
 def print_character(character):
     print('Your character is named', character[0])  # print name
 
-    for i in range(1, 6):  # print stats
+    for i in range(1, 7):  # print stats
         print('Your', character[i][0], 'is', character[i][1])
 
     if len(character) == 8 and character[7]:  # print items if they exist
