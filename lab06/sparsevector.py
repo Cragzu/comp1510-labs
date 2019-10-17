@@ -26,6 +26,12 @@ def sparse_add(first_vec, second_vec):
     :param first_vec: a dictionary representing a sparse vector
     :param second_vec: a dictionary representing a sparse vector
     :return: a dictionary containing the sum of the two param dictionaries
+
+    >>> sparse_add({3: 1, 4: 2, 5: 4, 9: 5}, {3: 1, 5: 2, 9: -5})
+    {3: 2, 5: 6, 4: 2}
+
+    >>> sparse_add({}, {0: 1, 1: 2, 2: 3})
+    {0: 1, 1: 2, 2: 3}
     """
     sum_vec = {}
     for key, value in first_vec.items():  # add values with the same key
