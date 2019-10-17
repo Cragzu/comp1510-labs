@@ -26,11 +26,3 @@ def sparse_add(first_vec, second_vec):
         del sum_vec[i]
              
     return sum_vec
-
-
-def main():
-    print(sparse_add({3: 1, 4: 2, 5: 4, 9: 5}, {3: 1, 5: 2, 9: -5}))
-
-
-if __name__ == '__main__':
-    main()
