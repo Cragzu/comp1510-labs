@@ -10,6 +10,7 @@ def list_tagger(batch):
     Calculate the length of the list batch and return the same list with the length (int) inserted at the front.
     :param batch: a list
     :return: a list equal to batch with the length at index 0
+
     >>> list_tagger(['a', 'b', 'c', 'd'])
     [4, 'a', 'b', 'c', 'd']
     >>> list_tagger([])
@@ -27,6 +28,7 @@ def cutoff(num_list, divisor):
     :param num_list: a list of ints
     :param divisor: an int
     :return: an int representing the count of numbers in num_list that are a multiple of divisor
+
     >>> cutoff([2, 3, 4, 8], 2)
     3
     """
@@ -79,6 +81,25 @@ def name_list():
                 names[len(name)] = [name]  # start new dict length entry
 
     return names
+
+
+def multiples_of_3(upper_bound):
+    """
+    Calculate the sum of all positive multiples of 3 below the given upper_bound.
+
+    :precondition: upper_bound must be a positive int
+    :param upper_bound: an int
+    :return: an int representing the sum of every multiple of 3 below upper_bound
+
+    >>>multiples_of_3(10)
+    18
+    """
+    multiple_sum = 0
+    for i in range(upper_bound):
+        if i % 3 == 0:
+            multiple_sum += i
+
+    return multiple_sum
 
 
 def main():
