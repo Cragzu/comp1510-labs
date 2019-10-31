@@ -35,6 +35,23 @@ def cutoff(num_list, divisor):
     return count
 
 
+def prepender(str_list, new_str):
+    """
+    Prepend each string in a given list with the given string.
+
+    Add new_str to the beginning of every string in str_list, modifying the existing list.
+
+    :precondition: str_list must only contain strings
+    :param str_list: a list of strings
+    :param new_str: a string
+    :return: none
+    """
+    for i in range(len(str_list)):
+        temp_string = new_str + str_list[i]
+        str_list[i] = temp_string  # todo: does this need a temp variable to work? could I reassign it in one line?
+    return
+
+
 def main():
     """
     Drive the program.
