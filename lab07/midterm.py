@@ -135,7 +135,7 @@ def main():
     Tests the function in this module.
     """
 
-    die_tallies()
+    print(cutoff([0], 5))
 
 
 if __name__ == "__main__":
