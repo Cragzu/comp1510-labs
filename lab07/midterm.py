@@ -27,6 +27,8 @@ def cutoff(num_list, divisor):
     :param num_list: a list of ints
     :param divisor: an int
     :return: an int representing the count of numbers in num_list that are a multiple of divisor
+    >>> cutoff([2, 3, 4, 8], 2)
+    3
     """
     count = 0
     for i in num_list:
@@ -50,6 +52,33 @@ def prepender(str_list, new_str):
         temp_string = new_str + str_list[i]
         str_list[i] = temp_string  # todo: does this need a temp variable to work? could I reassign it in one line?
     return
+
+
+def name_list():
+    """
+    Create a dictionary containing a series of user-entered names, grouped by their length.
+
+    Repeatedly prompt the user to enter a name, exiting the loop when they enter 'quit'. For each name, check if the
+    dictionary already contains a key for that name's length. If it does, add the name to its value (a list). If it
+    doesn't, create a new key-value pair with the length as the key and a list containing the name as the value.
+
+    :return: a dictionary containing key-value pairs of ints and lists of strings representing the name list.
+    """
+    names = {}
+    user_exit = False
+
+    while not user_exit:
+        name = input('Please enter a name, or enter quit to finish: ')
+        if name.lower() == 'quit':
+            user_exit = True
+
+        else:
+            if len(name) in names.keys():
+                names[len(name)].append(name)  # add name to existing dict length entry
+            else:
+                names[len(name)] = [name]  # start new dict length entry
+
+    return names
 
 
 def main():
