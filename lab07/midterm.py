@@ -19,6 +19,22 @@ def list_tagger(batch):
     return batch
 
 
+def cutoff(num_list, divisor):
+    """
+    Determine the number of integers in a given list that are a multiple of the given number.
+
+    :precondition: num_list must only contain integers
+    :param num_list: a list of ints
+    :param divisor: an int
+    :return: an int representing the count of numbers in num_list that are a multiple of divisor
+    """
+    count = 0
+    for i in num_list:
+        if i % divisor == 0:
+            count += 1
+    return count
+
+
 def main():
     """
     Drive the program.
