@@ -1,6 +1,7 @@
 """
 Module containing functions from the 1510 midterm exam.
 """
+import random
 
 
 def list_tagger(batch):
@@ -102,12 +103,39 @@ def multiples_of_3(upper_bound):
     return multiple_sum
 
 
+def die_tallies():
+    """
+    Tabulate the number of times each side of a die was rolled in a given number of rolls.
+
+    Get user input for number of sides of the die and number of rolls to perform. Create a dict with int keys
+    representing each side of the die. Roll the die the specified number of times, and keep track of how many times
+    each side was rolled using the dict.
+
+    :return: none, uses print to display the result
+    """
+    sides = int(input('How many sides should the die have?: '))
+    rolls = int(input('Roll how many dice?: '))
+
+    tally = {i: 0 for i in range(1, (sides + 1))}  # initialize dict with keys for every side of the die
+
+    progress = 0
+    while progress < rolls:  # roll dice and tick up tallies for each instance of a side
+        roll = random.randint(1, sides)
+        tally[roll] += 1
+        progress += 1
+
+    for k, v in tally.items():
+        print(k, ': ', v)
+
+
 def main():
     """
     Drive the program.
 
     Tests the function in this module.
     """
+
+    die_tallies()
 
 
 if __name__ == "__main__":
