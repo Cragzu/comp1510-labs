@@ -52,8 +52,7 @@ def prepender(str_list, new_str):
     :return: none
     """
     for i in range(len(str_list)):
-        temp_string = new_str + str_list[i]
-        str_list[i] = temp_string  # todo: does this need a temp variable to work? could I reassign it in one line?
+        str_list[i] = new_str + str_list[i]  # add new_str to the front of every string in str_list
     return
 
 
@@ -134,8 +133,6 @@ def main():
 
     Tests the function in this module.
     """
-
-    print(cutoff([0], 5))
 
 
 if __name__ == "__main__":
