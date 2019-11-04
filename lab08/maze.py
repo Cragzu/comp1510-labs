@@ -12,18 +12,12 @@ def input_loop(prompt, valid_choices):
     :precondition: the valid_choices list must contain only length-1 strings of capital letters
     :return: a char representing the user's choice
     """
-    valid_choices.append('QUIT')  # account for quitting the program
-
     valid_input = False
     while not valid_input:
         user_choice = (input(prompt)).upper()
 
         if user_choice not in valid_choices:  # check if input is valid
             print('Sorry, that wasn\'t a valid input. Please try again.')
-
-        elif user_choice == 'QUIT':  # end program
-            print('You successfully escaped the dungeon. Maybe you\'ll find the treasure another day...')
-            exit()
 
         else:
             valid_input = True
@@ -76,7 +70,7 @@ def move(current_position):
 
     prompt_list = valid_movements(current_position)[0]
 
-    if len(prompt_list) < 4:
+    if len(prompt_list) < 4:  # user is against a boundary of the map
         print('You\'ve reached a dead end! Best not to continue past here or you will likely be eaten by a grue...')
 
     prompt = 'Which direction to move? You can go: '
