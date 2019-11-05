@@ -13,7 +13,7 @@ def input_loop(prompt, valid_choices):
     :return: a char representing the user's choice
     """
     valid_input = False
-    while not valid_input:
+    while not valid_input:  # repeat until input is valid
         user_choice = (input(prompt)).upper()
 
         if user_choice not in valid_choices:  # check if input is valid
@@ -77,17 +77,17 @@ def move(current_position):
     for i in prompt_list:
         prompt += (i + ' ')
 
-    direction = input_loop(prompt, valid_movements(current_position)[1])
+    direction = input_loop(prompt, valid_movements(current_position)[1])  # get the direction to move as input
 
+    # updating first index for vertical movement
     if direction == 'N':
         current_position[0] -= 1
-
     elif direction == 'S':
         current_position[0] += 1
 
+    # update second index for horizontal movement
     elif direction == 'E':
         current_position[1] += 1
-
     elif direction == 'W':
         current_position[1] -= 1
 
@@ -110,12 +110,12 @@ def game():
     character = [0, 0]  # starting coordinates
 
     victory_reached = False
-    while not victory_reached:
+    while not victory_reached:  # loop until user wins
 
         print('You are at coordinates:', board[character[0]][character[1]])
         move(character)
 
-        if character == [4, 4]:  # quit
+        if character == [4, 4]:  # victory
             victory_reached = True
 
         print('\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n')
