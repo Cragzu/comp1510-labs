@@ -17,7 +17,8 @@ def validate_email(string: str) -> str:
     """
     match = re.compile(r'''
         (\w+@)  # username and separator
-        
+        ([a-zA-Z0-9]+)  # domain name
+        ([.]\w{2,4})  # top-level domain (such as .com)
         ''', re.VERBOSE)
 
     match_object = match.search(string)
@@ -30,7 +31,10 @@ def main():
     """
     Drive the program.
     """
-    print(validate_email('apple@'))
+
+    # Email validation
+    print(validate_email('My email is apple@abc.com'))
+    print(validate_email('My email is aaaaaaaaa'))
 
 
 if __name__ == "__main__":
