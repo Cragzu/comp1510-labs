@@ -49,6 +49,33 @@ def nakamoto(name: str) -> str:
         return 'That is no family member of ours!'
 
 
+def sentence(string: str) -> str:
+    """
+    Validate a sentence comprised of specific words.
+
+    The sentence is case-insensitive. For it to be valid:
+        - the first word is Alice, Bob, or Carol
+        - the second word is eats, pets, or throws
+        - the third word is apples, cats, or baseballs
+        - there is a period . at the end
+
+    :param string: str, the sentence to be validated
+    :return: str, a message saying whether or not the given sentence is valid
+    """
+    match = re.compile(r'''
+        (Alice|Bob|Carol)(\s)  # first word and space after
+        (eats|pets|throws)(\s)  # second word and space after
+        (apples|cats|baseballs)(\.)  # last word and period
+        ''', re.IGNORECASE | re.VERBOSE)
+
+    match_object = match.search(string)
+    if match_object:
+        return 'A sentence was found: ' + match_object.group()
+    else:
+        return 'No valid sentences were found!'
+
+
+
 
 def main():
     """
@@ -60,8 +87,12 @@ def main():
     # print(validate_email('My email is aaaaaaaaa'))
 
     # Nakamoto name validation
-    print(nakamoto('My name is Angel Nakamoto'))
-    print(nakamoto('ann Nakamoto'))
+    # print(nakamoto('My name is Angel Nakamoto'))
+    # print(nakamoto('ann Nakamoto'))
+
+    # 3-word sentence validation
+    print(sentence('The sentence is ALICE EATS APPLES.'))
+    print(sentence('The sentence is ALICE EATS APPLE.'))
 
 
 if __name__ == "__main__":
