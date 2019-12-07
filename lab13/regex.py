@@ -75,6 +75,28 @@ def sentence(string: str) -> str:
         return 'No valid sentences were found!'
 
 
+def numbers(number: str) -> str:
+    """
+    Validate a comma-separated number.
+
+    For the number to be valid:
+        - it is comprised of only digits
+        - if there are more than 3 digits, there should be a comma after every 3 digits
+
+    :param number: str, the number to be validated
+    :return: str, a message saying whether or not the given number is valid
+    """
+    match = re.compile(r'''
+        (^\d{,3}(,\d{3})*$)
+        ''', re.VERBOSE)
+
+    match_object = match.search(number)
+    if match_object:
+        return 'A valid number was found: ' + match_object.group()
+    else:
+        return 'No valid numbers were found!'
+
+
 
 
 def main():
@@ -91,8 +113,12 @@ def main():
     # print(nakamoto('ann Nakamoto'))
 
     # 3-word sentence validation
-    print(sentence('The sentence is ALICE EATS APPLES.'))
-    print(sentence('The sentence is ALICE EATS APPLE.'))
+    # print(sentence('The sentence is ALICE EATS APPLES.'))
+    # print(sentence('The sentence is ALICE EATS APPLE.'))
+
+    # Comma-separated number validation
+    print(numbers('4,222'))
+    print(numbers('3,44,1'))
 
 
 if __name__ == "__main__":
